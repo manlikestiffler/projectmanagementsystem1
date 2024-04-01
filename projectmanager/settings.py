@@ -44,7 +44,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS=['onrender.com']
+ALLOWED_HOSTS=['onrender.com','http://127.0.0.1:8000/']
 
 
 # Application definition
