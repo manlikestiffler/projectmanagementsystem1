@@ -28,22 +28,6 @@ def home(request):
   else:
       return customer_view(request)
 
-# def createproject(request):
-#     if request.method == 'POST':
-#         form = CreateprojectForm(request.POST)
-#         if form.is_valid():
-#             var = form.save(commit=False)
-#             var.project_status = 'Pending'
-#             var.save()
-#             messages.info(request, 'Your project has been successfully submitted')
-#             return redirect('account:dashboard')
-#         else:
-#             messages.warning(request,'Something went wrong')
-#             return redirect('project:home')
-#     else:
-#         form = CreateprojectForm()
-#         context = {'form':form}
-#         return render(request, 'projects/clients/project_form.html',context)
 
 def createProject(request):
     form = CreateProjectForm
