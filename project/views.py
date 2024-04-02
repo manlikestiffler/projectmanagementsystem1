@@ -66,7 +66,7 @@ def project_detail(request,id):
         )   
        # room.participants.add(request.user.name)
         return redirect('project:project-detail', id=project.id)
-    t = UserBase.objects.get(user_name = project.created_by )
+    t = UserBase.objects.get(username = project.created_by )
     projects_per_user = t.created_by.all()
     context = {'project':project, 'projects_per_user':projects_per_user,'project_messages':project_messages}
     return render(request, 'projects/clients/project_detail.html', context)
