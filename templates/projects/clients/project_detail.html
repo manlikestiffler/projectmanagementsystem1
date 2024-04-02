@@ -16,10 +16,14 @@
           <a href="{% url 'project:update-project' project.id %}"  class="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1">Update</a>
           {% endif %}
         </div>
-        <p class="leading-relaxed mb-4">{{project.description}}</p>
+        <div class="leading-relaxed mb-4">{{project.description}}</div>
         <div class="flex border-t border-gray-800 py-2">
           <span class="text-gray-500">Accepted Date</span>
           <span class="ml-auto text-white">{{project.accepted_date}}</span>
+        </div>
+        <div class="flex border-t border-gray-800 py-2">
+          <span class="text-gray-500">Closed Date</span>
+          <span class="ml-auto text-white">{{project.closed_date}}</span>
         </div>
         <div class="flex border-t border-gray-800 py-2">
           <span class="text-gray-500">Created By</span>
