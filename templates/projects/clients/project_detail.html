@@ -52,9 +52,13 @@
        
         <div class="flex">
           {% if request.user.is_staff and not project.is_resolved %}
-          <a href="{% url 'project:close-project' project.pk %}" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Confirm Resolution</a>
-          <a href="{% url 'project:accept-project' project.pk %}" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Accept Project</a>
-      {% endif %}  
+            {% if request.user.is_staff and  project.is_resolved %}
+            <p>This project has been resolved </p>
+            {% else %}
+            <a href="{% url 'project:close-project' project.pk %}" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Confirm Resolution</a>
+            <a href="{% url 'project:accept-project' project.pk %}" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Accept Project</a>
+            {% endif %}
+          {% endif %}  
         </div>
       </div>
       <div class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded">
