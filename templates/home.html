@@ -2,25 +2,13 @@
 
 {% block content %}
 
-<style>
-  .search-bar{
-    border-radius:35px;
-  }
-  .search-bar: focus{
-    border-color:green;
-  }
-</style>
+
 
 <section class="text-gray-400 bg-gray-900 body-font">
     <div class="container px-5 py-24 mx-auto">
       <div class="flex flex-col text-center w-full mb-20">
         <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-white" style="color:yellow">Vetlam Solutions</h1>
-          <div class="form-outline" style="padding-left:380px;padding-top:30px" data-mdb-input-init>
-            <form class="header__search" method="GET" action="{% url 'project:home' %}" class="text-gray-400 bg-gray-900 body-font">
-              {% csrf_token %}
-            <input type="text"  style="width:490px;" name="q" class="search-bar" placeholder="Search Here..." aria-label="Search" />
-            </form>
-          </div>
+        {% include 'searchbar.html' %}
       </div>
       <div class="lg:w-3/3 w-full mx-auto overflow-auto">
         {% if not request.user.is_staff %}

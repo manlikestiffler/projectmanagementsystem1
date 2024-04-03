@@ -1,0 +1,22 @@
+<style>
+    .search-bar{
+      background-color:gray;
+      padding: 0px 20px;
+      color:whitesmoke;
+      border-radius:40px;
+      border-bottom:3px solid;
+      border-color:yellow;
+      height:40px;
+      line-height:7px;
+      background:transparent;
+      font-size:15px;
+ 
+    }
+  </style>
+
+<div class="form-outline" style="padding-left:50px; padding-top:10px"  data-mdb-input-init>
+    <form class="header__search" method="GET" action="{% url 'project:home' %}">
+      {% csrf_token %}
+    <input type="text"  style="width:490px;" name="q" class="search-bar" placeholder="Search Here..." aria-label="Search" />
+    </form>
+  </div>
