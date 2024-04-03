@@ -4954,3 +4954,38 @@
 [03/Apr/2024 05:01:32] DEBUG [django.db.backends:131] (1.829) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") VALUES ('Can add company', 8, 'add_company'), ('Can change company', 8, 'change_company'), ('Can delete company', 8, 'delete_company'), ('Can view company', 8, 'view_company'), ('Can add project', 9, 'add_project'), ('Can change project', 9, 'change_project'), ('Can delete project', 9, 'delete_project'), ('Can view project', 9, 'view_project'), ('Can add message', 10, 'add_message'), ('Can change message', 10, 'change_message'), ('Can delete message', 10, 'delete_message'), ('Can view message', 10, 'view_message') RETURNING "auth_permission"."id"; args=('Can add company', 8, 'add_company', 'Can change company', 8, 'change_company', 'Can delete company', 8, 'delete_company', 'Can view company', 8, 'view_company', 'Can add project', 9, 'add_project', 'Can change project', 9, 'change_project', 'Can delete project', 9, 'delete_project', 'Can view project', 9, 'view_project', 'Can add message', 10, 'add_message', 'Can change message', 10, 'change_message', 'Can delete message', 10, 'delete_message', 'Can view message', 10, 'view_message'); alias=default
 [03/Apr/2024 05:01:33] DEBUG [django.db.backends:161] (0.359) COMMIT; args=None; alias=default
 [03/Apr/2024 05:01:33] DEBUG [django.db.backends:131] (0.344) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'project'; args=('project',); alias=default
+[03/Apr/2024 05:05:05] DEBUG [django.db.backends:131] (0.516) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+[03/Apr/2024 05:05:05] DEBUG [django.db.backends:131] (0.516) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+[03/Apr/2024 05:05:10] DEBUG [django.db.backends:131] (0.531) SELECT "account_userbase"."id", "account_userbase"."password", "account_userbase"."last_login", "account_userbase"."is_superuser", "account_userbase"."email", "account_userbase"."username", "account_userbase"."phone_number", "account_userbase"."address", "account_userbase"."town_city", "account_userbase"."is_active", "account_userbase"."is_staff", "account_userbase"."created", "account_userbase"."updated" FROM "account_userbase" WHERE "account_userbase"."email" = 'a@a.com' LIMIT 21; args=('a@a.com',); alias=default
+[03/Apr/2024 05:05:26] DEBUG [django.db.backends:131] (0.516) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+[03/Apr/2024 05:05:27] DEBUG [django.db.backends:131] (0.609) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+[03/Apr/2024 05:05:31] DEBUG [django.db.backends:131] (0.953) SELECT "account_userbase"."id", "account_userbase"."password", "account_userbase"."last_login", "account_userbase"."is_superuser", "account_userbase"."email", "account_userbase"."username", "account_userbase"."phone_number", "account_userbase"."address", "account_userbase"."town_city", "account_userbase"."is_active", "account_userbase"."is_staff", "account_userbase"."created", "account_userbase"."updated" FROM "account_userbase" WHERE "account_userbase"."email" = 'a@a.com' LIMIT 21; args=('a@a.com',); alias=default
+[03/Apr/2024 05:05:42] DEBUG [django.db.backends:131] (0.656) INSERT INTO "account_userbase" ("password", "last_login", "is_superuser", "email", "username", "phone_number", "address", "town_city", "is_active", "is_staff", "created", "updated") VALUES ('pbkdf2_sha256$600000$gZINYTeRSJU9Fge0NeyoKN$FxqH6GddZ1J5V3GTRfvDmBICPOABhmqD0vujfc9iGB0=', NULL, true, 'a@a.com', 'Tinashe Gomo', '', '', '', true, true, '2024-04-03 03:05:41.619943+00:00'::timestamptz, '2024-04-03 03:05:41.619943+00:00'::timestamptz) RETURNING "account_userbase"."id"; args=('pbkdf2_sha256$600000$gZINYTeRSJU9Fge0NeyoKN$FxqH6GddZ1J5V3GTRfvDmBICPOABhmqD0vujfc9iGB0=', None, True, 'a@a.com', 'Tinashe Gomo', '', '', '', True, True, datetime.datetime(2024, 4, 3, 3, 5, 41, 619943, tzinfo=datetime.timezone.utc), datetime.datetime(2024, 4, 3, 3, 5, 41, 619943, tzinfo=datetime.timezone.utc)); alias=default
