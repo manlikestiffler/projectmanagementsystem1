@@ -33,7 +33,10 @@
                                 {% endif%}
                                 {% if 'complete' in request.get_full_path %}
                                         <h3 class="mb-4">Password Reset Success</h3>
-                                        <a href="{% url "account:login" %}">Login</a>
+                                        <div class="d-grid gap-2">
+                                            <a href="{% url "account:login" %}" class="btn btn-primary">Login To your Account</a>
+                                          </div>
+                                      
                                 {% endif%}
                             </div>       
                         </div>
