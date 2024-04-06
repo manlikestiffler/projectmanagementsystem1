@@ -43,7 +43,7 @@
             <td class="px-4 py-3 text-lg text-white"><span class="badge bg-danger">Completed</span></td>
             {% endif %}
             <td class="px-4 py-3">{{project.assigned_to}}</td>
-            <td class="w-10 text-center"><a href="{{project.get_absolute_url}}">View</a></td>
+            <td class="btn btn-outline-dark"><a href="{{project.get_absolute_url}}">View</a></td>
           </tr>
           {% endfor %}
         </tbody>
