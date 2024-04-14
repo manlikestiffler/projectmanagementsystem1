@@ -10,3 +10,8 @@ class UpdateProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         exclude = ['assigned_to', 'created_by',]
+
+class NewCommentForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = '__all__'

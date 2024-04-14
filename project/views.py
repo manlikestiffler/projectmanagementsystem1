@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.http import JsonResponse
 from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
@@ -57,17 +58,18 @@ def createProject(request):
 #project detaisl
 def project_detail(request,id):
     project = Project.objects.get(id=id)
+    t = UserBase.objects.get(username = project.created_by )
+    projects_per_user = t.created_by.all()
     project_messages = project.message_set.all()
     if request.method == 'POST':
         message = Message.objects.create(
             user=request.user,
             project=project,
             body=request.POST.get('body')
-        )   
+        )
        # room.participants.add(request.user.name)
-        return redirect('project:project-detail', id=project.id)
-    t = UserBase.objects.get(username = project.created_by )
-    projects_per_user = t.created_by.all()
+        # return HttpResponseRedirect(reverse('project:project-detail', id=project.id))
+   
     context = {'project':project, 'projects_per_user':projects_per_user,'project_messages':project_messages}
     return render(request, 'projects/clients/project_detail.html', context)
 
@@ -89,6 +91,8 @@ def company_details(request,id):
     user = UserBase.objects.get(id=id)
     context = {'user':user,'project':project}
     return render(request, 'projects/clients/company-details.html',context)
+
+
 
 """ For Engineers """
 

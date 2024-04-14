@@ -1,31 +1,112 @@
 {% load static %}
 
+
+<style>
+  header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 249px;
+    border-bottom: 1px solid #dbdbdb;
+    }
+    header ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 0 30px;
+    }
+    header ul li:last-child{
+    margin-right: 0;
+    }
+    header ul li a{
+    text-decoration: none;
+    color: #42424a;
+    padding: 22px 0;
+    display: inline-block;
+    transition: all ease 0.3s;
+  
+    }
+    header ul li a:hover{
+    color: #ff8a00;
+    }
+    
+    /* submenu style */
+    header ul .submenu{
+    position: absolute;
+    width: 200px;
+    background-color: #ffffff;
+    box-shadow: 0 20px 45px #00000020;
+    margin-top: -50px;
+    opacity: 0;
+    z-index: -999;
+    transition: all ease 0.5s;
+    }
+    header ul li:hover .submenu{
+    z-index: 99;
+    opacity: 1;
+    margin-top: 0;
+    }
+    header ul .submenu li{
+    margin: 0;
+    width: 100%;
+    
+    } 
+    header ul .submenu li a{
+    padding: 15px 20px;
+    display: inline-block;
+    width: 100%;
+    font-size:14px;
+    }
+    
+    .hero_sec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+    .logo1{
+      font-size:18px;
+      color:blue;
+      font-family:cursive;
+    }
+</style>
+
+
 {% if request.user.is_authenticated %}
-<header class="text-gray-400 bg-gray-900 body-font" style="margin:0;padding:0;">
-  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center" >
-    <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0" >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-      </svg>
-      <span class="ml-3 text-xl">Hi {{request.user}}</span>
-    </a>
-    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-      <a href="{% url 'project:home' %}"  class="btn btn-outline-primary">Home</a>
-      {% if request.user.is_staff %}
-      <a href="{% url 'project:all-closed-projects' %}" class="btn btn-outline-success">All Completed Projects</a>
-      <a href="{% url 'project:workspace' %}" class="btn btn-outline-light">Workspace</a>
-      {% else %}
-      <a href="{% url 'account:edit_details' %}" class=class="btn btn-outline-dark">Edit Profile</a>
-      {% endif %}
-    </nav>
-    <a href="{% url 'account:logout' %}" class="inline-flex items-center btn btn-outline-danger">Logout
-      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-        <path d="M5 12h14M12 5l7 7-7 7"></path>
-      </svg>
-    </a>
-  </div>
-</header>
+<main>
+  <header>
+      <div class="logo" >
+          <span class="logo1">Hi, {{request.user}}</span>
+      </div>
+      <nav>
+          <ul class="list">
+            <li class="list1"><a href="{% url 'project:home' %}">Home</a></li>
+              <li class="list1"><a href="#">Features</a>
+                  <ul class="submenu">
+                    {% if request.user.is_staff %}
+                    <li>
+                      <a href="{% url 'project:all-closed-projects' %}">All Completed Projects</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'project:workspace' %}">Workspace</a>
+                    </li>
+                    {% endif %}
+                    <li><a class="#" href="{% url 'account:edit_details' %}">Edit Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="#" href="{% url 'account:logout' %}">Logout</a></li>
+                  </ul>
+              </li>
+              <li>
+                <form class="d-flex "  style="padding-left:50px" role="search">
+                <input class="form-control me-2" style="width:300px;" type="search" name="q" placeholder="Search" aria-label="Search">
+              </form>
+            </li>
+          </ul>
+      </nav>
+  </header>
+</main>
 {% endif %}
+
 
 
 
