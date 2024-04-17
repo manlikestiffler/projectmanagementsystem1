@@ -28,8 +28,6 @@
           <tr>
             <td class="px-4 py-3">{{project.title}}</td>
             <td class="px-4 py-3"><a href="{% url 'project:home' %}?q={{project.company.name}}">{{project.company.name}}</a></td>
-            <td class="px-4 py-3">{{project.assigned_to}}</td>
-            <td class="px-4 py-3">{{project.date_created}}</td>
             {% if project.project_status == 'Active' %}
             <td class="px-4 py-3"><span class="badge bg-success">Active</span></td>
             {% elif project.project_status == 'Pending' %}
@@ -37,7 +35,8 @@
             {% elif project.project_status == 'Completed' %}
             <td class="px-4 py-3 text-lg text-white"><span class="badge bg-danger">Completed</span></td>
             {% endif %}
-           
+            <td class="px-4 py-3">{{project.assigned_to}}</td>
+            <td class="px-4 py-3">{{project.date_created}}</td>
             <td class="btn btn-outline-dark"><a href="{{project.get_absolute_url}}">View</a></td>
           </tr>
           {% endfor %}
